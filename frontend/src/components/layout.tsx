@@ -54,7 +54,9 @@ export function Layout() {
           <div className="ml-auto">
             <Select
               value={theme}
-              onValueChange={(value) => setTheme(value === "dark" ? "dark" : "light")}
+              onValueChange={(value) =>
+                setTheme(value === "dark" ? "dark" : "light")
+              }
             >
               <SelectTrigger className="h-9 w-[120px]">
                 <SelectValue placeholder="Theme" />

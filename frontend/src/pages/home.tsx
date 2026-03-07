@@ -43,7 +43,9 @@ export function HomePage() {
       <Card className="border-primary/20 bg-gradient-to-br from-primary/10 via-card to-card">
         <CardContent className="space-y-5 p-6">
           <div className="space-y-1">
-            <h1 className="text-2xl font-bold tracking-tight">Welcome to Cubby</h1>
+            <h1 className="text-2xl font-bold tracking-tight">
+              Welcome to Cubby
+            </h1>
             <p className="text-muted-foreground">
               Find things fast, keep storage organized, and jump into your next
               action.
@@ -126,7 +128,9 @@ export function HomePage() {
                       to={`/items/${item.id}`}
                       className="block rounded-lg border p-3 transition-colors hover:bg-accent/50"
                     >
-                      <div className="font-medium leading-tight">{item.name}</div>
+                      <div className="font-medium leading-tight">
+                        {item.name}
+                      </div>
                       {item.location && (
                         <div className="mt-1 text-xs text-muted-foreground">
                           {item.location.name}
@@ -146,13 +150,16 @@ export function HomePage() {
                       to="/locations"
                       className="block rounded-lg border p-3 transition-colors hover:bg-accent/50"
                     >
-                      <div className="font-medium leading-tight">{location.name}</div>
-                      {location.itemCount !== undefined && location.itemCount > 0 && (
-                        <div className="mt-1 text-xs text-muted-foreground">
-                          {location.itemCount} item
-                          {location.itemCount === 1 ? "" : "s"}
-                        </div>
-                      )}
+                      <div className="font-medium leading-tight">
+                        {location.name}
+                      </div>
+                      {location.itemCount !== undefined &&
+                        location.itemCount > 0 && (
+                          <div className="mt-1 text-xs text-muted-foreground">
+                            {location.itemCount} item
+                            {location.itemCount === 1 ? "" : "s"}
+                          </div>
+                        )}
                     </Link>
                   ))}
                 </div>
@@ -164,7 +171,9 @@ export function HomePage() {
               searchResults &&
               searchResults.items.length === 0 &&
               searchResults.locations.length === 0 && (
-                <div className="text-sm text-muted-foreground">No matches found.</div>
+                <div className="text-sm text-muted-foreground">
+                  No matches found.
+                </div>
               )}
 
             <div className="pt-1">
@@ -201,7 +210,9 @@ export function HomePage() {
                       Updated {new Date(item.updatedAt).toLocaleDateString()}
                     </div>
                   </div>
-                  {item.quantity > 1 && <Badge variant="secondary">×{item.quantity}</Badge>}
+                  {item.quantity > 1 && (
+                    <Badge variant="secondary">×{item.quantity}</Badge>
+                  )}
                 </Link>
               ))}
             </div>

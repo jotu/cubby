@@ -204,7 +204,8 @@ function CreateLocationForm({
       {
         name,
         description: description || undefined,
-        parentId: parentId && parentId !== "none" ? Number(parentId) : undefined,
+        parentId:
+          parentId && parentId !== "none" ? Number(parentId) : undefined,
       },
       { onSuccess },
     );

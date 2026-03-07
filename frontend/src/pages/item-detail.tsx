@@ -292,7 +292,10 @@ function EditDetailsSection({
                     <SelectContent>
                       <SelectItem value="none">None</SelectItem>
                       {locationOptions.map((location) => (
-                        <SelectItem key={location.id} value={String(location.id)}>
+                        <SelectItem
+                          key={location.id}
+                          value={String(location.id)}
+                        >
                           {location.path}
                         </SelectItem>
                       ))}
