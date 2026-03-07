@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Guardrail: fmt-check + vet + lint + test — run before committing"
+#MISE depends=["fmt-check", "vet", "lint", "test"]
+set -euo pipefail
+
+echo "All checks passed."

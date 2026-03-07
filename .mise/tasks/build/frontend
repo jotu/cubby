@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Build frontend for production"
+set -euo pipefail
+
+cd frontend && npm run build

@@ -1,0 +1,22 @@
+# mise.toml — Cubby project tooling
+# https://mise.jdx.dev/configuration.html
+
+[tools]
+go = "1.25"
+node = "22"
+
+# Go linting + formatting
+"golangci-lint" = "latest"
+gofumpt = "latest"
+
+# Frontend formatting
+"npm:prettier" = "latest"
+
+# Aggregate tasks (subtasks live in .mise/tasks/ as bash scripts)
+[tasks.dev]
+description = "Run backend + frontend in development mode"
+depends = ["dev:backend", "dev:frontend"]
+
+[tasks.build]
+description = "Build backend + frontend"
+depends = ["build:backend", "build:frontend"]

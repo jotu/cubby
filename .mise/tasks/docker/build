@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Build Docker image"
+set -euo pipefail
+
+docker compose build

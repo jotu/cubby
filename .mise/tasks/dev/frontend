@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Run frontend dev server"
+set -euo pipefail
+
+cd frontend && npm run dev

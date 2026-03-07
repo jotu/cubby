@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Run golangci-lint on backend"
+set -euo pipefail
+
+cd backend && golangci-lint run

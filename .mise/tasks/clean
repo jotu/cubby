@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+#MISE description="Remove build artifacts"
+set -euo pipefail
+
+rm -rf bin/
+rm -rf frontend/dist/
+echo "Cleaned."

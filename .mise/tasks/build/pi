@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Cross-compile Go backend for Raspberry Pi (ARM64)"
+set -euo pipefail
+
+cd backend && GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags="-s -w" -o ../bin/cubby-arm64 ./cmd/server
+echo "Built bin/cubby-arm64"

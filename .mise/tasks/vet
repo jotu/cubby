@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Run go vet on backend"
+set -euo pipefail
+
+cd backend && go vet ./...

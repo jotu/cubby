@@ -1,0 +1,20 @@
+services:
+  cubby:
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - cubby-data:/data
+    environment:
+      - CUBBY_PORT=8080
+      - CUBBY_DB_PATH=/data/cubby.db
+      - CUBBY_UPLOAD_DIR=/data/uploads
+    restart: unless-stopped
+    read_only: true
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+
+volumes:
+  cubby-data:

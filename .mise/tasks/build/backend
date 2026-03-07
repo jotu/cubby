@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+#MISE description="Build Go backend binary"
+set -euo pipefail
+
+cd backend && CGO_ENABLED=0 go build -ldflags="-s -w" -o ../bin/cubby ./cmd/server
+echo "Built bin/cubby"

@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Run Go backend (hot reload with go run)"
+set -euo pipefail
+
+cd backend && CUBBY_FRONTEND_DEV_URL="http://localhost:5173" go run ./cmd/server

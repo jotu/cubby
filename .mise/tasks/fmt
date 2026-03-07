@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#MISE description="Format Go (gofumpt) and frontend (prettier)"
+set -euo pipefail
+
+echo "Formatting Go..."
+cd backend && gofumpt -w .
+
+if [ -f ../frontend/package.json ]; then
+  echo "Formatting frontend..."
+  cd ../frontend && prettier --write .
+fi

@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+#MISE description="Check formatting without writing (Go + frontend)"
+set -euo pipefail
+
+echo "Checking Go formatting..."
+UNFORMATTED=$(cd backend && gofumpt -l .)
+if [ -n "$UNFORMATTED" ]; then
+  echo "Unformatted Go files:"
+  echo "$UNFORMATTED"
+  exit 1
+fi
+
+if [ -f frontend/package.json ]; then
+  echo "Checking frontend formatting..."
+  cd frontend && prettier --check .
+fi
+
+echo "All files formatted."
