@@ -98,6 +98,16 @@ Every task script MUST:
 │   ├── build           # mise run docker:build
 │   ├── up              # mise run docker:up
 │   └── down            # mise run docker:down
+├── flyme/
+│   ├── up              # mise run flyme:up
+│   ├── down            # mise run flyme:down
+│   ├── status          # mise run flyme:status
+│   ├── check           # mise run flyme:check
+│   ├── redo            # mise run flyme:redo
+│   └── create          # mise run flyme:create -- "<description>"
+├── db/
+│   ├── backup          # mise run db:backup [output-path]
+│   └── restore         # mise run db:restore -- --yes <backup-file>
 └── clean               # mise run clean
 ```
 

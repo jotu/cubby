@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+#MISE description="Validate Flyme migration files (read-only)"
+set -euo pipefail
+
+cd backend && go run ./cmd/flyme check

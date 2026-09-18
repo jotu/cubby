@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+#MISE description="Create SQLite backup with WAL checkpoint"
+set -euo pipefail
+
+db_path="${CUBBY_DB_PATH:-./data/cubby.db}"
+if [[ ! -f "$db_path" ]]; then
+  echo "database file not found: $db_path" >&2
+  exit 1
+fi
+
+timestamp="$(date +%F-%H%M%S)"
+output_path="${1:-./data/backups/cubby-${timestamp}.db}"
+
+mkdir -p "$(dirname "$output_path")"
+
+if [[ -e "$output_path" ]]; then
+  echo "backup output already exists: $output_path" >&2
+  exit 1
+fi
+
+sqlite3 "$db_path" \
+  "PRAGMA wal_checkpoint(FULL);" \
+  ".backup '$output_path'"

@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+#MISE description="Redo latest Flyme migration"
+set -euo pipefail
+
+db_path="${CUBBY_DB_PATH:-./data/cubby.db}"
+mkdir -p "$(dirname "$db_path")"
+db_path="$(cd "$(dirname "$db_path")" && pwd)/$(basename "$db_path")"
+
+cd backend && CUBBY_DB_PATH="$db_path" go run ./cmd/flyme redo

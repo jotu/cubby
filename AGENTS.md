@@ -41,9 +41,19 @@ mise run vet                    # go vet
 mise run verify                 # guardrail: fmt-check + vet + lint + test
 mise run clean                  # remove bin/ and dist/
 
+mise run flyme:up               # apply migrations to CUBBY_DB_PATH
+mise run flyme:status           # list migration states
+mise run flyme:check            # validate migration files (read-only)
+mise run flyme:down -- 1        # roll back latest migration
+mise run flyme:redo             # down + up for latest migration
+mise run flyme:create -- "<description>"  # create new migration files
+
 mise run docker:build           # docker compose build
 mise run docker:up              # docker compose up -d
 mise run docker:down            # docker compose down
+
+mise run db:backup [output-path]             # backup SQLite database
+mise run db:restore -- --yes --stopped <backup-file>   # restore backup (app must be stopped)
 ```
 
 ### Running specific tests
