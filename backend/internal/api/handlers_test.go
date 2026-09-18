@@ -59,6 +59,32 @@ func createItem(t *testing.T, queries *db.Queries, name string, locationID *int6
 	return item
 }
 
+func TestHandleHealthz(t *testing.T) {
+	server, _ := setupTestServer(t)
+
+	req := httptest.NewRequest(http.MethodGet, "/healthz", nil)
+	rec := httptest.NewRecorder()
+
+	server.ServeHTTP(rec, req)
+
+	if rec.Code != http.StatusOK {
+		t.Fatalf("status = %d, want %d", rec.Code, http.StatusOK)
+	}
+	if contentType := rec.Header().Get("Content-Type"); contentType != "application/json" {
+		t.Fatalf("content-type = %q, want %q", contentType, "application/json")
+	}
+
+	var response struct {
+		Status string `json:"status"`
+	}
+	if err := json.NewDecoder(rec.Body).Decode(&response); err != nil {
+		t.Fatalf("decode response: %v", err)
+	}
+	if response.Status != "ok" {
+		t.Fatalf("status body = %q, want %q", response.Status, "ok")
+	}
+}
+
 func TestHandleListLocations(t *testing.T) {
 	t.Run("success", func(t *testing.T) {
 		server, queries := setupTestServer(t)

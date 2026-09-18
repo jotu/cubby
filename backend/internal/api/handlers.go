@@ -9,6 +9,12 @@ import (
 	"github.com/joacim/cubby/internal/qr"
 )
 
+// --- Health Handler ---
+
+func (s *Server) handleHealthz(w http.ResponseWriter, r *http.Request) {
+	writeJSON(w, http.StatusOK, map[string]string{"status": "ok"})
+}
+
 // --- Location Handlers ---
 
 func (s *Server) handleListLocations(w http.ResponseWriter, r *http.Request) {

@@ -62,7 +62,12 @@ Start:
 ```bash
 docker compose -f compose.home.yml up -d --build
 docker compose -f compose.home.yml ps
+curl -fsS http://192.168.1.50:8080/healthz
 ```
+
+The health endpoint is a liveness check. A successful response confirms the
+container is serving HTTP; it does not replace the backup and restore checks
+below.
 
 ## 3) LAN-only protection
 
@@ -108,6 +113,7 @@ sqlite3 /opt/cubby/data/cubby.db "PRAGMA wal_checkpoint(FULL);" \
 git pull
 docker compose -f compose.home.yml up -d --build
 docker compose -f compose.home.yml ps
+curl -fsS http://192.168.1.50:8080/healthz
 ```
 
 ## 6) If you still want Flyway/Liquibase

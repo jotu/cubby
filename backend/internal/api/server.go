@@ -42,6 +42,8 @@ func (s *Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 // --- Routes ---
 
 func (s *Server) routes(frontendDevURL string) {
+	s.mux.HandleFunc("GET /healthz", s.handleHealthz)
+
 	// Locations
 	s.mux.HandleFunc("GET /v1/locations", s.handleListLocations)
 	s.mux.HandleFunc("POST /v1/locations", s.handleCreateLocation)
